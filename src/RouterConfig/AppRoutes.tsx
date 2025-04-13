@@ -9,7 +9,7 @@ const router = createBrowserRouter(
     return {
       path: route.path,
       element: isProtected ? (
-        <AuthRoute allowedRoles={route.allowedRoles}>
+        <AuthRoute allowedRoles={route.allowedRoles} isSideBarEnabled={route.showInSidebar}>
           {route.element}
         </AuthRoute>
       ) : (

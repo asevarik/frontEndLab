@@ -28,6 +28,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         // if (res.ok) {
         //   const userData = await res.json();
         // }
+        console.log("setting the user");
+        
         setUser({id:"1abcd123",name:'Abhishek',role:'admin'});
 
       } catch {

@@ -1,5 +1,5 @@
+import Auth from "@/Pages/Auth/Auth";
 import AdminPanel from "../Pages/Admin/Admin";
-import Login from "../Pages/Auth/Login/Login";
 import Home from "../Pages/Home/Home";
 import Unauthorized from "../Pages/UnAuthorized/UnAuthorized";
 
@@ -16,8 +16,8 @@ export interface AppRoute {
 
 export const routeConfig: AppRoute[] = [
   {
-    path: '/login',
-    element: <Login />,
+    path: '/auth',
+    element: <Auth />,
     showInSidebar: false,
   },
   {
