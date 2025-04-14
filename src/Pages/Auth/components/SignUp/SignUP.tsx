@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -19,22 +18,21 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { userSignUpObject, UserSignUpObject } from "../../zodvalidations";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth } from "@/RouterConfig/Context/authContext";
 
 const SignUp = () => {
+  const {handleSignUp} = useAuth()
   const form = useForm<UserSignUpObject>({
     resolver: zodResolver(userSignUpObject),
   });
-  const onSubmit = (data:UserSignUpObject)=>{
-    console.log("Submiited Data",data);
-    
-  }
+  
   return (
     <Card>
       <CardHeader> <CardTitle>SignUp</CardTitle>
       </CardHeader>
       <CardContent className="space-y-2">
       <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(handleSignUp)} className="space-y-8">
 
           
            <FormField

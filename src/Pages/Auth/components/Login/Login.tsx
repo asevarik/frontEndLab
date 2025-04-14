@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -19,16 +18,13 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { userLoginObject, UserLoginObject } from "../../zodvalidations";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth } from "@/RouterConfig/Context/authContext";
 const Login = () => {
- 
+  const {handleSignIn} = useAuth()
   const form = useForm<UserLoginObject>({
     resolver: zodResolver(userLoginObject),
   });
-  const onSubmit = (data:UserLoginObject)=>{
-    console.log("Submiited Data",data);
-    
-  }
-  
+ 
   return (
     <Card>
       <CardHeader>
@@ -36,7 +32,7 @@ const Login = () => {
       </CardHeader>
       <CardContent className="space-y-2">
       <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(handleSignIn)} className="space-y-8">
 
           <FormField
             control={form.control}
@@ -58,7 +54,7 @@ const Login = () => {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <Input placeholder="shadcn" {...field} type="password" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
