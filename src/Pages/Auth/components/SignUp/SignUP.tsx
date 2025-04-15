@@ -24,6 +24,12 @@ const SignUp = () => {
   const {handleSignUp} = useAuth()
   const form = useForm<UserSignUpObject>({
     resolver: zodResolver(userSignUpObject),
+    defaultValues:{
+      email:"asevarik@gmail.com",
+      password:"medika@1234",
+      username:"jhon wick",
+      name:"The Undertaker"
+    }
   });
   
   return (
